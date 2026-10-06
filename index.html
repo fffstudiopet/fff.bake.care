@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fff bake｜售後說明</title>
+  <title>fff bake care guide</title>
   <style>
     :root {
       --brand: #062464;
@@ -21,7 +21,7 @@
       margin: 0;
       min-height: 100vh;
       font-family: "Noto Sans TC", "Source Han Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      font-weight: 700;
+      font-weight: 900;
       background: linear-gradient(160deg, var(--soft), var(--white) 48%, #f7f9fc);
       color: var(--ink);
       display: flex;
@@ -47,8 +47,8 @@
     .logo {
       font-family: "XB Titre", "Noto Sans TC", sans-serif;
       font-style: italic;
-      font-size: 42px;
-      line-height: 1;
+      font-size: 34px;
+      line-height: 1.08;
       font-weight: 900;
     }
 
@@ -59,12 +59,13 @@
     }
 
     .slogan {
-      margin-top: 9px;
-      font-family: "XB Titre", "Noto Sans TC", sans-serif;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.78);
-      letter-spacing: 0.03em;
-      text-transform: lowercase;
+      margin-top: 10px;
+      font-family: "Noto Sans TC", "Source Han Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      font-size: 22px;
+      line-height: 1.25;
+      color: rgba(255, 255, 255, 0.92);
+      letter-spacing: 0.02em;
+      font-weight: 900;
     }
 
     .hero-line {
@@ -117,31 +118,41 @@
     .panel { display: none; }
     .panel.active { display: block; }
 
-    .page-title { margin: 2px 0 18px; }
+    .page-title {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 2px 0 18px;
+      color: var(--deep);
+      flex-wrap: wrap;
+    }
 
     .title-zh {
-      display: block;
+      display: inline;
       color: var(--deep);
-      font-size: 26px;
+      font-size: 25px;
       line-height: 1.15;
       font-weight: 900;
     }
 
     .title-en {
-      display: block;
-      margin-top: 5px;
+      display: inline;
+      margin-top: 0;
       font-family: "XB Titre", "Noto Sans TC", sans-serif;
-      color: rgba(4, 26, 61, 0.56);
-      font-size: 13px;
-      letter-spacing: 0.04em;
+      color: var(--deep);
+      font-size: 20px;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
       text-transform: lowercase;
+      font-weight: 900;
     }
 
     p {
       margin: 0 0 15px;
-      color: rgba(4, 26, 61, 0.84);
+      color: rgba(4, 26, 61, 0.86);
       font-size: 15px;
       line-height: 1.9;
+      font-weight: 900;
     }
 
     .thank-you {
@@ -166,6 +177,7 @@
       color: var(--ink);
       font-size: 14px;
       line-height: 1.85;
+      font-weight: 900;
     }
 
     .warning {
@@ -180,9 +192,10 @@
     }
 
     .small-note {
-      color: rgba(4, 26, 61, 0.62);
+      color: rgba(4, 26, 61, 0.68);
       font-size: 13px;
       line-height: 1.75;
+      font-weight: 900;
     }
 
     .info-list {
@@ -209,9 +222,10 @@
 
     .info-card span {
       display: block;
-      color: rgba(4, 26, 61, 0.78);
+      color: rgba(4, 26, 61, 0.82);
       font-size: 14px;
       line-height: 1.65;
+      font-weight: 900;
     }
 
     .footer {
@@ -230,12 +244,13 @@
     }
 
     .footer-slogan {
-      margin-top: 7px;
+      margin-top: 8px;
       font-family: "XB Titre", "Noto Sans TC", sans-serif;
-      color: rgba(4, 26, 61, 0.58);
-      font-size: 12px;
-      letter-spacing: 0.03em;
+      color: rgba(4, 26, 61, 0.66);
+      font-size: 16px;
+      letter-spacing: 0.02em;
       text-transform: lowercase;
+      font-weight: 900;
     }
 
     .socials {
@@ -270,9 +285,11 @@
     @media (max-width: 380px) {
       body { padding: 12px; }
       .hero { padding: 26px 20px 22px; }
-      .logo { font-size: 37px; }
+      .logo { font-size: 30px; }
+      .slogan { font-size: 20px; }
       .content { padding: 18px 16px 24px; }
-      .title-zh { font-size: 24px; }
+      .title-zh { font-size: 23px; }
+      .title-en { font-size: 18px; }
     }
   </style>
 </head>
@@ -280,8 +297,8 @@
 <body>
   <main class="card">
     <section class="hero">
-      <div class="logo">fff bake</div>
-      <div class="slogan">made for furry family moments</div>
+      <div class="logo">fff bake care guide</div>
+      <div class="slogan">保存・退冰・享用指南</div>
       <div class="hero-line"></div>
     </section>
 
