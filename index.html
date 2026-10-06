@@ -166,6 +166,10 @@
       gap: 20px;
     }
 
+    .thanks-content {
+      padding-top: 4px;
+    }
+
     p {
       margin: 0;
       font-size: clamp(15.5px, 3.7vw, 18px);
@@ -177,7 +181,7 @@
 
     .en-line {
       font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-size: clamp(17px, 4vw, 22px);
+      font-size: clamp(18px, 4.4vw, 24px);
       line-height: 1.5;
       color: var(--brand);
       text-transform: lowercase;
@@ -250,8 +254,7 @@
     }
 
     footer {
-      margin-top: 26px;
-      padding: 18px 20px 20px;
+      padding: 16px 20px 18px;
       text-align: center;
       background: linear-gradient(160deg, var(--brand), var(--deep));
       border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -270,7 +273,7 @@
     }
 
     .footer-slogan {
-      margin: 5px 0 13px;
+      margin: 5px 0 12px;
       font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
       font-size: 14px;
       line-height: 1.25;
@@ -287,8 +290,8 @@
     }
 
     .social-link {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
       display: grid;
       place-items: center;
@@ -306,8 +309,8 @@
     }
 
     .social-link svg {
-      width: 24px;
-      height: 24px;
+      width: 23px;
+      height: 23px;
       display: block;
     }
 
@@ -341,7 +344,7 @@
       }
 
       footer {
-        padding: 17px 18px 19px;
+        padding: 15px 18px 17px;
       }
     }
   </style>
@@ -356,7 +359,7 @@
 
     <div class="tabs-wrap">
       <nav class="tabs" aria-label="care guide tabs">
-        <button class="tab active" data-tab="thanks">感謝小卡</button>
+        <button class="tab active" data-tab="thanks">♡</button>
         <button class="tab" data-tab="storage">保存方式</button>
         <button class="tab" data-tab="serving">食用方式</button>
         <button class="tab" data-tab="ingredients">成分資訊</button>
@@ -368,12 +371,7 @@
 
     <main>
       <section class="panel active" id="thanks">
-        <div class="section-title">
-          <span class="zh">感謝小卡</span>
-          <span class="en">thank you</span>
-        </div>
-
-        <div class="content">
+        <div class="content thanks-content">
           <p class="en-line">thank you for your purchase.</p>
           <p>感謝您選擇 <span class="brand-word">fff bake</span>。</p>
           <p>這裡整理了保存方式、食用方式、成分資訊與注意事項，可透過上方選單依照需要查看。</p>
