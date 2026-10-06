@@ -41,25 +41,28 @@
 
     .phone {
       width: min(100%, 760px);
+      min-height: calc(100vh - 56px);
       background: var(--white);
       border: 1px solid rgba(6, 36, 100, 0.12);
       border-radius: 26px;
       overflow: hidden;
       box-shadow: 0 24px 70px rgba(4, 26, 61, 0.14);
+      display: flex;
+      flex-direction: column;
     }
 
     header {
       background: linear-gradient(160deg, var(--brand), var(--deep));
       color: var(--white);
       text-align: center;
-      padding: 33px 22px 31px;
+      padding: 43px 26px 40px;
     }
 
     .hero-title {
       margin: 0;
       font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-size: clamp(30px, 6.5vw, 46px);
-      line-height: 1.06;
+      font-size: clamp(39px, 8.3vw, 60px);
+      line-height: 1.04;
       font-weight: 1000;
       font-style: italic;
       text-transform: lowercase;
@@ -67,9 +70,9 @@
     }
 
     .hero-subtitle {
-      margin: 12px 0 0;
-      font-size: clamp(17px, 3.8vw, 23px);
-      line-height: 1.35;
+      margin: 15px 0 0;
+      font-size: clamp(22px, 4.9vw, 30px);
+      line-height: 1.32;
       font-weight: 1000;
       color: rgba(255, 255, 255, 0.9);
       text-shadow: 0 0 0.45px currentColor;
@@ -113,6 +116,7 @@
 
     main {
       padding: 34px 28px 26px;
+      flex: 1;
     }
 
     .panel {
@@ -254,7 +258,8 @@
     }
 
     footer {
-      padding: 16px 20px 18px;
+      margin-top: auto;
+      padding: 12px 17px 14px;
       text-align: center;
       background: linear-gradient(160deg, var(--brand), var(--deep));
       border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -263,8 +268,8 @@
     .footer-brand {
       margin: 0;
       font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-size: 20px;
-      line-height: 1.15;
+      font-size: 17px;
+      line-height: 1.12;
       color: var(--white);
       font-style: italic;
       font-weight: 1000;
@@ -273,10 +278,10 @@
     }
 
     .footer-slogan {
-      margin: 5px 0 12px;
+      margin: 4px 0 10px;
       font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-size: 14px;
-      line-height: 1.25;
+      font-size: 12px;
+      line-height: 1.2;
       color: rgba(255, 255, 255, 0.86);
       font-weight: 1000;
       text-transform: lowercase;
@@ -286,12 +291,12 @@
     .socials {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .social-link {
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
       display: grid;
       place-items: center;
@@ -309,8 +314,8 @@
     }
 
     .social-link svg {
-      width: 23px;
-      height: 23px;
+      width: 20px;
+      height: 20px;
       display: block;
     }
 
@@ -321,10 +326,11 @@
 
       .phone {
         border-radius: 22px;
+        min-height: calc(100vh - 32px);
       }
 
       header {
-        padding: 33px 18px 30px;
+        padding: 43px 18px 39px;
       }
 
       main {
@@ -344,7 +350,7 @@
       }
 
       footer {
-        padding: 15px 18px 17px;
+        padding: 12px 16px 14px;
       }
     }
   </style>
