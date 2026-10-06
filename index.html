@@ -1,548 +1,62 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fff bake care guide</title>
-
-  <style>
-    :root {
-      --brand: #062464;
-      --white: #FFFFFF;
-      --silver: #C8CDD6;
-      --navy: #0A254F;
-      --deep: #061A3F;
-      --soft: #E8ECF2;
-      --ink: #041A3D;
-      --gray: #515B6D;
-      --light-gray: #F7F9FC;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "Source Han Sans TC", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      font-weight: 1000;
-      background:
-        radial-gradient(circle at top, rgba(200, 205, 214, 0.35), transparent 34%),
-        linear-gradient(180deg, var(--soft), var(--white) 48%, #f8fafc);
-      color: var(--ink);
-      display: flex;
-      justify-content: center;
-      padding: 28px 14px;
-      letter-spacing: 0;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: geometricPrecision;
-    }
-
-    .phone {
-      width: min(100%, 760px);
-      background: var(--white);
-      border: 1px solid rgba(6, 36, 100, 0.12);
-      border-radius: 26px;
-      overflow: hidden;
-      box-shadow: 0 24px 70px rgba(4, 26, 61, 0.14);
-    }
-
-    header {
-      background: linear-gradient(160deg, var(--brand), var(--deep));
-      color: var(--white);
-      text-align: center;
-      padding: 30px 22px 28px;
-    }
-
-    .hero-title {
-      margin: 0;
-      font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-size: clamp(25px, 5.4vw, 38px);
-      line-height: 1.08;
-      font-weight: 1000;
-      font-style: italic;
-      text-transform: lowercase;
-      text-shadow: 0 0 0.5px currentColor;
-    }
-
-    .hero-subtitle {
-      margin: 12px 0 0;
-      font-size: clamp(17px, 3.8vw, 23px);
-      line-height: 1.35;
-      font-weight: 1000;
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 0 0 0.45px currentColor;
-    }
-
-    .tabs-wrap {
-      background: var(--white);
-      border-bottom: 1px solid rgba(6, 36, 100, 0.12);
-      padding: 14px 14px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .tabs {
-      display: flex;
-      gap: 9px;
-      min-width: max-content;
-    }
-
-    .tab {
-      border: 1px solid rgba(6, 36, 100, 0.16);
-      background: var(--light-gray);
-      color: var(--brand);
-      padding: 10px 15px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 1000;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: 0.2s ease;
-      font-family: inherit;
-      text-shadow: 0 0 0.35px currentColor;
-    }
-
-    .tab.active {
-      background: var(--brand);
-      color: var(--white);
-      border-color: var(--brand);
-      box-shadow: 0 8px 20px rgba(6, 36, 100, 0.2);
-    }
-
-    main {
-      padding: 34px 28px 28px;
-    }
-
-    .panel {
-      display: none;
-      animation: fade 0.22s ease;
-    }
-
-    .panel.active {
-      display: block;
-    }
-
-    @keyframes fade {
-      from {
-        opacity: 0;
-        transform: translateY(4px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .section-title {
-      display: flex;
-      align-items: baseline;
-      gap: 11px;
-      flex-wrap: wrap;
-      margin-bottom: 26px;
-      color: var(--brand);
-    }
-
-    .section-title .zh {
-      font-size: clamp(23px, 4.9vw, 33px);
-      line-height: 1.15;
-      font-weight: 1000;
-      text-shadow: 0 0 0.45px currentColor;
-    }
-
-    .section-title .en {
-      font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-size: clamp(19px, 4vw, 27px);
-      line-height: 1.15;
-      font-weight: 1000;
-      color: var(--gray);
-      text-transform: lowercase;
-      text-shadow: 0 0 0.35px currentColor;
-    }
-
-    .content {
-      display: grid;
-      gap: 20px;
-    }
-
-    p {
-      margin: 0;
-      font-size: clamp(15.5px, 3.7vw, 18px);
-      line-height: 1.95;
-      font-weight: 1000;
-      color: var(--ink);
-      text-shadow: 0 0 0.35px currentColor;
-    }
-
-    .en-line {
-      font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-size: clamp(17px, 4vw, 22px);
-      line-height: 1.5;
-      color: var(--brand);
-      text-transform: lowercase;
-      font-weight: 1000;
-      text-shadow: 0 0 0.45px currentColor;
-    }
-
-    .brand-word {
-      font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-style: italic;
-      font-weight: 1000;
-      color: var(--brand);
-      text-shadow: 0 0 0.45px currentColor;
-    }
-
-    .highlight,
-    .line-text-link {
-      color: var(--brand);
-      background: rgba(232, 236, 242, 0.95);
-      border-radius: 8px;
-      padding: 1px 7px;
-      font-weight: 1000;
-      text-decoration: none;
-      text-shadow: 0 0 0.35px currentColor;
-    }
-
-    .line-text-link {
-      display: inline-block;
-      transition: 0.2s ease;
-    }
-
-    .line-text-link:hover {
-      background: var(--brand);
-      color: var(--white);
-    }
-
-    .note-box {
-      background: var(--light-gray);
-      border: 1px solid rgba(6, 36, 100, 0.12);
-      border-radius: 16px;
-      padding: 18px;
-    }
-
-    .note-box strong {
-      color: var(--brand);
-      font-weight: 1000;
-    }
-
-    .base-grid {
-      display: grid;
-      gap: 12px;
-    }
-
-    .base-card {
-      background: var(--light-gray);
-      border: 1px solid rgba(6, 36, 100, 0.12);
-      border-radius: 14px;
-      padding: 15px 16px;
-      font-size: clamp(15px, 3.6vw, 17px);
-      line-height: 1.7;
-      font-weight: 1000;
-      text-shadow: 0 0 0.35px currentColor;
-    }
-
-    .base-card span {
-      color: var(--brand);
-      font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-weight: 1000;
-      text-transform: lowercase;
-    }
-
-    footer {
-      margin-top: 34px;
-      padding: 26px 20px 34px;
-      text-align: center;
-      background: linear-gradient(180deg, var(--white), var(--soft));
-      border-top: 1px solid rgba(6, 36, 100, 0.1);
-    }
-
-    .footer-brand {
-      margin: 0;
-      font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-size: 22px;
-      line-height: 1.2;
-      color: var(--brand);
-      font-style: italic;
-      font-weight: 1000;
-      text-transform: lowercase;
-      text-shadow: 0 0 0.45px currentColor;
-    }
-
-    .footer-slogan {
-      margin: 7px 0 19px;
-      font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
-      font-size: 16px;
-      line-height: 1.35;
-      color: var(--navy);
-      font-weight: 1000;
-      text-transform: lowercase;
-      text-shadow: 0 0 0.35px currentColor;
-    }
-
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-    }
-
-    .social-link {
-      width: 50px;
-      height: 50px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: var(--white);
-      color: var(--brand);
-      border: 1px solid rgba(6, 36, 100, 0.18);
-      box-shadow: 0 8px 22px rgba(4, 26, 61, 0.08);
-      transition: 0.2s ease;
-      text-decoration: none;
-    }
-
-    .social-link:hover {
-      background: var(--brand);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
-
-    .social-link svg {
-      width: 29px;
-      height: 29px;
-      display: block;
-    }
-
-    .line-logo text {
-      font-family: Arial, Helvetica, sans-serif;
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: -0.8px;
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 16px 10px;
-      }
-
-      .phone {
-        border-radius: 22px;
-      }
-
-      header {
-        padding: 30px 18px 26px;
-      }
-
-      main {
-        padding: 32px 24px 24px;
-      }
-
-      .content {
-        gap: 19px;
-      }
-
-      p {
-        line-height: 1.9;
-      }
-
-      .section-title {
-        margin-bottom: 25px;
-      }
-
-      footer {
-        padding: 26px 18px 34px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="phone">
-    <header>
-      <h1 class="hero-title">fff bake care guide</h1>
-      <p class="hero-subtitle">保存・退冰・享用指南</p>
-    </header>
-
-    <div class="tabs-wrap">
-      <nav class="tabs" aria-label="care guide tabs">
-        <button class="tab active" data-tab="thanks">感謝小卡</button>
-        <button class="tab" data-tab="storage">保存方式</button>
-        <button class="tab" data-tab="serving">食用方式</button>
-        <button class="tab" data-tab="ingredients">成分資訊</button>
-        <button class="tab" data-tab="notes">注意事項</button>
-        <button class="tab" data-tab="delivery">宅配可能狀況</button>
-        <button class="tab" data-tab="contact">異常聯繫</button>
-      </nav>
-    </div>
-
-    <main>
-      <section class="panel active" id="thanks">
-        <div class="section-title">
-          <span class="zh">感謝小卡</span>
-          <span class="en">thank you</span>
-        </div>
-
-        <div class="content">
-          <p class="en-line">thank you for your purchase.</p>
-          <p>感謝您選擇 <span class="brand-word">fff bake</span>。</p>
-          <p>這裡整理了保存方式、食用方式、成分資訊與注意事項，可透過上方選單依照需要查看。</p>
-          <p>收到商品後若有任何需要協助的地方，歡迎透過 <a class="line-text-link" href="https://line.me/R/ti/p/@065freka" target="_blank" rel="noopener">LINE</a> 與我們聯繫。</p>
-        </div>
-      </section>
-
-      <section class="panel" id="storage">
-        <div class="section-title">
-          <span class="zh">保存方式</span>
-          <span class="en">storage</span>
-        </div>
-
-        <div class="content">
-          <p>宅配與自取皆為 <span class="highlight">冷凍狀態交付</span>。收到後請 <span class="highlight">立即冷凍保存</span>。</p>
-
-          <p>冷凍可保存 <span class="highlight">14 天</span>。若已退冰，請冷藏保存，並於 <span class="highlight">2 天內食用完畢</span>。</p>
-
-          <div class="note-box">
-            <p><strong>※ 因各家冷凍、冷藏設備溫度不同，實際保存狀態仍需依商品狀況為準。※</strong></p>
-          </div>
-
-          <p>請 <span class="highlight">避免反覆退冰與冷凍</span>，以免影響商品品質與食用安全。</p>
-
-          <p>若無法一次吃完，建議先分切成每次需要的份量，分裝後再冷凍保存。每次只取出要食用的份量退冰即可。</p>
-        </div>
-      </section>
-
-      <section class="panel" id="serving">
-        <div class="section-title">
-          <span class="zh">食用方式</span>
-          <span class="en">serving</span>
-        </div>
-
-        <div class="content">
-          <p>食用前請先放入冷藏退冰約 <span class="highlight">6–12 小時</span>，實際退冰時間會依商品大小、冰箱溫度與保存狀態而有所不同。</p>
-
-          <p>商品為熟食製作，<span class="highlight">退冰後即可食用</span>。若寶貝腸胃較敏感，或平常較少接觸鮮食，建議 <span class="highlight">稍微加熱至溫熱後</span> 再食用。</p>
-
-          <p>可使用微波爐、電鍋或烤箱低溫加熱，請 <span class="highlight">避免加熱過久</span>。</p>
-
-          <p>食用份量請依寶貝體重、活動量、腸胃狀況與平常飲食習慣調整；若寶貝平常較少接觸鮮食，建議 <span class="highlight">第一次先少量分次食用</span>。</p>
-        </div>
-      </section>
-
-      <section class="panel" id="ingredients">
-        <div class="section-title">
-          <span class="zh">成分資訊</span>
-          <span class="en">ingredients</span>
-        </div>
-
-        <div class="content">
-          <p><span class="brand-word">fff bake</span> 商品主要以肉類基底製作，部分款式會搭配韓式寵物奶霜。肉類基底共有 <span class="highlight">雞肉、牛肉、豬肉</span> 三種口味可選。</p>
-
-          <div class="base-grid">
-            <div class="base-card">雞肉口味 <span>chicken base</span> ❙ 雞胸肉 & 雞內臟</div>
-            <div class="base-card">牛肉口味 <span>beef base</span> ❙ 牛腱肉 & 牛內臟</div>
-            <div class="base-card">豬肉口味 <span>pork base</span> ❙ 豬里肌 & 豬內臟</div>
-          </div>
-
-          <p>其餘基底成分包含花椰菜、橄欖油、燕麥、地瓜與寵物營養補充配方。</p>
-
-          <p>部分蛋糕、造型裝飾或特定款式，會使用 <span class="highlight">fff signature cream 韓式寵物奶霜</span> 製作。</p>
-
-          <p>因不同款式、造型與裝飾需求，可能使用角豆粉、蝶豆花粉、仙人掌果粉、花椰菜粉、甜菜根粉、紫薯粉、菠菜粉、南瓜粉、竹炭粉等食材調色或製作。</p>
-
-          <div class="note-box">
-            <p><strong>實際成分請以商品包裝標示為準。</strong></p>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel" id="notes">
-        <div class="section-title">
-          <span class="zh">注意事項</span>
-          <span class="en">notes</span>
-        </div>
-
-        <div class="content">
-          <div class="note-box">
-            <p><strong>因添加寵物營養補充配方，肉類基底中可能出現些微綠色或深色點狀，為天然礦物質、藻類等成分造成，屬正常現象。</strong></p>
-          </div>
-
-          <p>商品皆為手工製作，會依照提供照片與需求，以 <span class="brand-word">fff bake</span> 的風格重新詮釋。造型比例、細節與顏色可能與參考照片不會完全相同。</p>
-
-          <p>商品使用天然食材與果蔬粉製作，顏色可能會因食材批次、冷凍保存或退冰狀態產生些微差異。</p>
-
-          <p>若寶貝有過敏、慢性疾病、特殊飲食需求或醫囑，食用前建議先詢問獸醫師。</p>
-
-          <p>蠟燭、插卡、包裝配件等非食用物品，可能會視商品造型與配送安全分開包裝附上。建議於拍照或食用前再自行擺放，並請於食用前先移除。</p>
-
-          <p>本商品為寵物食品／點心，非醫療用途，亦不具療效。</p>
-        </div>
-      </section>
-
-      <section class="panel" id="delivery">
-        <div class="section-title">
-          <span class="zh">宅配可能狀況</span>
-          <span class="en">delivery notes</span>
-        </div>
-
-        <div class="content">
-          <p>宅配過程可能因低溫配送、搬運或路況產生輕微位移、奶霜小範圍沾黏、裝飾些微移動或輕微碰撞痕跡，皆屬配送過程中可能發生之狀況。</p>
-
-          <p>收到後請先於 <span class="highlight">冷凍狀態下拆除保鮮膜、氣泡布或防撞材質</span>。請勿等商品退冰後才拆除包材，避免包材黏住表面，影響外觀。</p>
-        </div>
-      </section>
-
-      <section class="panel" id="contact">
-        <div class="section-title">
-          <span class="zh">異常聯繫</span>
-          <span class="en">contact for issues</span>
-        </div>
-
-        <div class="content">
-          <p>若收到商品時有 <span class="highlight">嚴重毀損、明顯變質、包裹破損或配送異常</span>，請於收到當下拍照或錄影保留紀錄，並盡快透過 <a class="line-text-link" href="https://line.me/R/ti/p/@065freka" target="_blank" rel="noopener">LINE</a> 與 <span class="brand-word">fff bake</span> 聯繫。</p>
-
-          <p>為方便確認商品狀態，請保留外箱、包材與商品照片，並提供訂購姓名與收到時間。</p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p class="footer-brand">fff bake</p>
-      <p class="footer-slogan">made for furry family moments</p>
-
-      <div class="socials">
-        <a class="social-link" href="https://line.me/R/ti/p/@065freka" target="_blank" rel="noopener" aria-label="LINE">
-          <svg class="line-logo" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <path d="M32 10C18.2 10 7 18.8 7 29.7C7 39.4 15.8 47.5 27.6 49C28.1 49.1 28.5 49.5 28.4 50L27.8 54.8C27.7 55.9 28.9 56.6 29.8 55.9L37.1 50.8C37.5 50.5 38 50.3 38.5 50.2C49.1 47.8 57 39.7 57 29.7C57 18.8 45.8 10 32 10Z" fill="currentColor"/>
-            <path d="M32 15C20.8 15 12 21.6 12 29.7C12 36.7 18.9 42.7 28.4 44.2C31.5 44.7 33.7 47.5 33.3 50.6L36.7 48.2C37.8 47.4 39 46.9 40.3 46.6C47.5 44.8 52 38.4 52 29.7C52 21.6 43.2 15 32 15Z" fill="white"/>
-            <text x="18.2" y="34.8" fill="currentColor">LINE</text>
-          </svg>
-        </a>
-
-        <a class="social-link" href="https://www.instagram.com/the.fff.bake/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <rect x="15" y="15" width="34" height="34" rx="10" stroke="currentColor" stroke-width="5"/>
-            <circle cx="32" cy="32" r="8" stroke="currentColor" stroke-width="5"/>
-            <circle cx="42" cy="22" r="3.2" fill="currentColor"/>
-          </svg>
-        </a>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    const tabs = document.querySelectorAll(".tab");
-    const panels = document.querySelectorAll(".panel");
-
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const target = tab.dataset.tab;
-
-        tabs.forEach((item) => item.classList.remove("active"));
-        panels.forEach((panel) => panel.classList.remove("active"));
-
-        tab.classList.add("active");
-        document.getElementById(target).classList.add("active");
-      });
-    });
-  </script>
-</body>
-</html>
+footer {
+  margin-top: 28px;
+  padding: 24px 20px 26px;
+  text-align: center;
+  background: linear-gradient(160deg, var(--brand), var(--deep));
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-brand {
+  margin: 0;
+  font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
+  font-size: 21px;
+  line-height: 1.2;
+  color: var(--white);
+  font-style: italic;
+  font-weight: 1000;
+  text-transform: lowercase;
+  text-shadow: 0 0 0.45px currentColor;
+}
+
+.footer-slogan {
+  margin: 6px 0 16px;
+  font-family: "XB Titre", "Source Han Sans TC", "Noto Sans TC", sans-serif;
+  font-size: 15px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 1000;
+  text-transform: lowercase;
+  text-shadow: 0 0 0.35px currentColor;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+}
+
+.social-link {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--brand);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow: 0 8px 20px rgba(4, 26, 61, 0.18);
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: var(--soft);
+  color: var(--deep);
+  transform: translateY(-2px);
+}
+
+.social-link svg {
+  width: 25px;
+  height: 25px;
+  display: block;
+}
